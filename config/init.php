@@ -9,7 +9,7 @@
  * 1 - режим розробки: показуємо всі помилки
  * 0 - режим продакшина: помилки не показуємо але логуємо
  */
-define("DEBUG", 1);
+define("DEBUG", 0);
 
 //показує на корінь проекту
 define("ROOT", dirname(__DIR__));
@@ -37,9 +37,9 @@ define("LAYOUT", 'default');
 //http://ishop2/public/index.php
 $app_path = "http://{$_SERVER['HTTP_HOST']}{$_SERVER['PHP_SELF']}";
 //http://ishop2/public/
-$app_path = preg_replace("#[^/]+$#","", $app_path);
+$app_path = preg_replace("#[^/]+$#",'', $app_path);
 //http://ishop2
-$app_path = str_replace('/public/', "", $app_path);
+$app_path = str_replace('/public/', '', $app_path);
 define("PATH", $app_path);
 
 //шлях до адмінки сайту

@@ -26,12 +26,12 @@ class Router
 
 	public static function dispatch($url){
 		if(self::matchRoute($url)){
-			$controller = 'app\controllers\\' . self::$route['prefix'] . self::$route['contoller'] . 'Controller';
+			$controller = 'app\controllers\\' . self::$route['prefix'] . self::$route['controller'] . 'Controller';
 			if(class_exists($controller)){
 				$controllerObject = new $controller(self::$route);
 				$action = self::lowerCamelCase(self::$route['action']) . 'Action';
 				if(method_exists($controllerObject, $action)){
-					$controllerObject=>$action();
+					$controllerObject->$action();
 				} else {
 					throw new \Exception("Method $controller::$action not found", 404);
 				}
