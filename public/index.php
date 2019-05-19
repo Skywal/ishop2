@@ -5,3 +5,4 @@ require_once  CONFIG . '/routes.php';
 
 new \ishop\App();
 
+//throw new Exception('Error hapend', 404);
