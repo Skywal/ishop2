@@ -13,10 +13,6 @@ class Router
 	// поточний маршрут
 	protected static $route = [];
 
-	public static function add($regexp, $route=[]){
-		self::$routes[$regexp] = $route;
-	}
-
 	public static function getRoutes(){
 		return self::$routes;
 	}
@@ -24,13 +20,34 @@ class Router
 		return self::$route;
 	}
 
+	/**
+	 * додати новий можвий шлях на сайті
+	 * @param $regexp
+	 * @param array $route
+	 */
+	public static function add($regexp, $route=[]){
+		self::$routes[$regexp] = $route;
+	}
+
+	/**
+	 * Обробка URL і виклик відповідного Екшину певного контролеру для показу користувачеві
+	 * @param $url
+	 * @throws \Exception
+	 */
 	public static function dispatch($url){
 		if(self::matchRoute($url)){
+			// пошук конкретного контролеру (із фільтурванням адмін частини і корисутвацької)
 			$controller = 'app\controllers\\' . self::$route['prefix'] . self::$route['controller'] . 'Controller';
+
 			if(class_exists($controller)){
+
+				// Свторення об'єкту контролера у випадку успішного його знаходження
 				$controllerObject = new $controller(self::$route);
+				// перетворення того що потрапляє із сторінти у прийнятний вигляд назви Екшину
 				$action = self::lowerCamelCase(self::$route['action']) . 'Action';
+
 				if(method_exists($controllerObject, $action)){
+					// виклик екшн методу у випадку його успішного знаходження
 					$controllerObject->$action();
 				} else {
 					throw new \Exception("Method $controller::$action not found", 404);
@@ -43,6 +60,11 @@ class Router
 		}
 	}
 
+	/**
+	 * Пошук маршутів із можливих доступних
+	 * @param $url
+	 * @return bool
+	 */
 	public static function matchRoute($url){
 		foreach (self::$routes as $pattern => $route){
 			if(preg_match("#{$pattern}#", $url, $matches)){
@@ -60,6 +82,7 @@ class Router
 					$route['prefix'] .= '\\';
 				}
 
+				//перетворення назви контролеру у потрібний нам вигляд
 				$route['controller'] = self::upperCamelCase($route['controller']);
 
 				self::$route = $route;
@@ -69,14 +92,23 @@ class Router
 		return false;
 	}
 
-	//CamelCase
+	/**
+	 * CamelCase
+	 * @param $name
+	 * @return mixed|string
+	 */
 	protected static function upperCamelCase($name){
-		$name = ucwords(str_replace('-', ' ', $name));
-		$name = str_replace(' ', '', $name);
-		return $name;
+//		$name = ucwords(str_replace('-', ' ', $name));
+//		$name = str_replace(' ', '', $name);
+//		return $name;
+		return str_replace(' ', '', ucwords(str_replace('-', ' ', $name)));
 	}
 
-	//camelCase
+	/**
+	 * camelCase
+	 * @param $name
+	 * @return string
+	 */
 	protected static function lowerCamelCase($name){
 		return lcfirst(self::upperCamelCase($name));
 	}
