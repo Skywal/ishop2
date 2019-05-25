@@ -4,4 +4,5 @@
 
 #tmp folder
 tmp/
-
+!tmp/cache
+tmp/cache/*

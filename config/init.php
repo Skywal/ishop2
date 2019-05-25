@@ -29,7 +29,7 @@ define("CACHE", ROOT . '/tmp/cache');
 define("CONFIG", ROOT . '/config');
 
 //шаблон сайту за замовчуванням
-define("LAYOUT", 'default');
+define("LAYOUT", 'watches');
 
 /**
  * головний URL сайту
