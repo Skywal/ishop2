@@ -10,9 +10,8 @@ class MainController extends AppController
 
 
 	public function indexAction(){
-//		debug($this->route);
-//		debug($this->controller);
-
-//		echo __FUNCTION__;
+		$this->setMeta('Main page',
+			'Page description',
+			'Page keywords');
 	}
 }
