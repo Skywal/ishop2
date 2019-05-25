@@ -49,6 +49,7 @@ class Router
 				if(method_exists($controllerObject, $action)){
 					// виклик екшн методу у випадку його успішного знаходження
 					$controllerObject->$action();
+					$controllerObject->getView();
 				} else {
 					throw new \Exception("Method $controller::$action not found", 404);
 				}
