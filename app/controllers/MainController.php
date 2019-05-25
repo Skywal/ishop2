@@ -13,5 +13,9 @@ class MainController extends AppController
 		$this->setMeta('Main page',
 			'Page description',
 			'Page keywords');
+		$name = "Jofry";
+		$age = 15;
+		$names = ['Jostar', 'Biskit'];
+		$this->set(compact('name', 'age', 'names'));
 	}
 }

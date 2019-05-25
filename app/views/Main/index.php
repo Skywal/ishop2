@@ -1,2 +1,7 @@
+<h1>Hello!!</h1>
+
+<p><?=$name;?></p>
+<p><?=$age;?></p>
 <?php
-echo "<h1>Hello!!</h1>";
+	debug($names);
+?>

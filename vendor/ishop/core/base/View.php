@@ -33,6 +33,8 @@ class View
 	}
 
 	public function render($data){
+		if(is_array($data)) extract($data); // витягування даних з масиву для доступу до них в шаблоні
+
 		$viewFile = \APP . "/views/{$this->prefix}{$this->controller}/{$this->view}.php";
 		if(is_file($viewFile)){
 			ob_start(); // включення буферизації
