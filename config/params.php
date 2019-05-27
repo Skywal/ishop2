@@ -1,5 +1,5 @@
 <?php
-
+// масив налаштувань для застосунку
 return[
     'admin_email' => 'admin@mail.com',
     'shop_name' => 'Магазин ishop2',

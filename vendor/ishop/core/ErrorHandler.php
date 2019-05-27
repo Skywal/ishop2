@@ -3,7 +3,11 @@
 
 namespace ishop;
 
-
+/**
+ * Обробник помилок, що виникають на сайті
+ * Class ErrorHandler
+ * @package ishop
+ */
 class ErrorHandler
 {
 
@@ -14,8 +18,10 @@ class ErrorHandler
 		if(DEBUG){
 			error_reporting(-1); // показуємо всі помилки
 		} else {
-			error_reporting(0);
+			error_reporting(0); // виключаємо протоколювання помилок
 		}
+		// всі виключення будуть проходити через даний клас
+        // викликатиметься функція exeptionHandler кожен раз якщо буде генеруватися помилка
 		set_exception_handler([$this, 'exeptionHandler']);
 	}
 
@@ -63,6 +69,7 @@ class ErrorHandler
 			die;
 		}
 
+		// якщо ми в режимі розробника то демонструватиметься відповідна сторінка
 		if(DEBUG){
 			require WWW . "/errors/dev.php";
 		} else {

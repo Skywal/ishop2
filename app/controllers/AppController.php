@@ -1,6 +1,8 @@
 <?php
 /// Контролер з спільними для всіх інших контролерів функціями
 
+// TODO: Comment this
+
 namespace app\controllers;
 
 

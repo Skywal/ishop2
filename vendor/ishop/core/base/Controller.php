@@ -1,9 +1,14 @@
 <?php
 
+// TODO: Comment this
 
 namespace ishop\base;
 
-
+/**
+ * Базовий контролер
+ * Class Controller
+ * @package ishop\base
+ */
 abstract class Controller
 {
 	public $route;
