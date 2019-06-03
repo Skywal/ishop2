@@ -42,11 +42,11 @@ class ErrorHandler
 	 * @param string $line рядок де помилка
 	 */
 	protected function logErrors($message = '', $file = '', $line = ''){
-		error_log("[". date('Y-m-d H:i:s') ."]\n
-		 Error text: {$message} \n
-		 File: {$file} \n
-		 Line: {$line}\n
-		 =============================================\n",
+		error_log("[". date('Y-m-d H:i:s') ."]
+		 Error text: {$message}
+		 File: {$file}
+		 Line: {$line}
+		 =============================================",
 			3,
 			ROOT . '/tmp/errors.log');
 	}

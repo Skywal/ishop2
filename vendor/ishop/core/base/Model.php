@@ -1,6 +1,5 @@
 <?php
 
-// TODO: Comment this
 
 namespace ishop\base;
 
@@ -12,11 +11,11 @@ use ishop\Db;
  * @package ishop\base
  */
 abstract class Model {
-	public $attributes = []; //масив властивостей моделей
-	public $errors = [];
-	public $rules = [];
+	public $attributes = []; //масив властивостей моделей, який буде ідентичний полям в базі данних
+	public $errors = []; // для складування помилок
+	public $rules = []; // правила валідації даних
 
 	public function __construct() {
-		Db::instance();
+		Db::instance(); // об'єкт класу бази данних
 	}
 }

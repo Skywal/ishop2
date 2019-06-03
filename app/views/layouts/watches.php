@@ -223,6 +223,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <!--bottom-header-->
 
 <div class="content">
+<!--  Output of the dynamic part of the page  -->
     <?=$content;?>
 </div>
 
